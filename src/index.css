@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-cream: #FFF4DE;
+    --color-charcoal: #171717;
+    --color-orange: #FF641F;
+    --color-yellow: #FFD43B;
+    --color-white: #FFFFFF;
+    
+    /* Flavour colors */
+    --flavour-chilli-primary: #F04432;
+    --flavour-chilli-secondary: #FF8A37;
+    --flavour-sour-primary: #75A94B;
+    --flavour-sour-secondary: #D4E8A4;
+    --flavour-salted-primary: #F3C94B;
+    --flavour-salted-secondary: #FFF0A6;
+    --flavour-masala-primary: #914ACB;
+    --flavour-masala-secondary: #D5A7F2;
+    --flavour-cheese-primary: #3988D5;
+    --flavour-cheese-secondary: #A7D8FF;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-heading {
+    font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF4DE;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF641F;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E05012;
+}
+
+/* Grain texture overlay */
+.grain-overlay {
+  background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* --- MONSTER-ENERGY-STYLE COMMERCIAL HERO PRODUCT STAGE --- */
+.hero-pouch-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.hero-glow-outer {
+  pointer-events: none;
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.hero-glow-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  filter: blur(44px);
+  background: radial-gradient(circle, rgba(255, 100, 31, 0.42) 0%, rgba(255, 212, 59, 0.22) 35%, transparent 70%);
+  animation: 4s ease-in-out infinite glow-breathe;
+}
+
+@keyframes glow-breathe {
+  0%, 100% { transform: scale(0.92); opacity: 0.7; }
+  50% { transform: scale(1.10); opacity: 1; }
+}
+
+.hero-orbit-ring {
+  pointer-events: none;
+  position: absolute;
+  width: 390px;
+  height: 390px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 100, 31, 0.22);
+  animation: 26s linear infinite spin-slow;
+  z-index: 2;
+}
+
+.hero-orbit-ring:before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #FFD43B;
+  box-shadow: 0 0 14px #FFD43B, 0 0 28px #FF641F;
+}
+
+.hero-orbit-ring:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  right: 18%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FF641F;
+  box-shadow: 0 0 10px #FF641F;
+  opacity: 0.8;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-pouch-img {
+  z-index: 4;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 40px rgba(23, 23, 23, 0.32));
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+  max-height: 52vh;
+  height: 440px;
+  max-width: 320px;
+  width: auto;
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Subtle packaging foil shine sweep */
+@keyframes foil-shimmer {
+  0% { transform: translateX(-150%) rotate(25deg); }
+  100% { transform: translateX(250%) rotate(25deg); }
+}
+
+.animate-foil {
+  animation: foil-shimmer 4s ease-in-out infinite;
+}
+
+/* Idle floating animation */
+@keyframes pouch-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(1.2deg); }
+}
+
+.animate-pouch-float {
+  animation: pouch-float 5s ease-in-out infinite;
+}
