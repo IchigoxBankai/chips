@@ -1,7 +1,20 @@
-// Web Audio API Procedural Snack Sound Effects
+// Web Audio API Procedural Snack Sound Effects + Real Audio Samples
 class SoundManager {
   private ctx: AudioContext | null = null;
   private isMuted: boolean = false;
+  private crunchAudioPool: HTMLAudioElement[] = [];
+  private poolIndex: number = 0;
+
+  constructor() {
+    if (typeof window !== 'undefined') {
+      const audioUrl = `${import.meta.env.BASE_URL}crunch.mp3`;
+      for (let i = 0; i < 4; i++) {
+        const audio = new Audio(audioUrl);
+        audio.preload = 'auto';
+        this.crunchAudioPool.push(audio);
+      }
+    }
+  }
 
   private initContext() {
     if (!this.ctx && typeof window !== 'undefined') {
@@ -27,9 +40,24 @@ class SoundManager {
     return this.isMuted;
   }
 
-  // Realistic crunchy chip bite sound using multi-burst filtered noise & transient pops
+  // Authentic chip crunch bite sound using uploaded crunch.mp3 with fallback
   public playCrunch() {
     if (this.isMuted) return;
+
+    if (this.crunchAudioPool.length > 0) {
+      const audio = this.crunchAudioPool[this.poolIndex];
+      this.poolIndex = (this.poolIndex + 1) % this.crunchAudioPool.length;
+      audio.currentTime = 0;
+      audio.play().catch(() => {
+        this.playProceduralCrunch();
+      });
+      return;
+    }
+
+    this.playProceduralCrunch();
+  }
+
+  private playProceduralCrunch() {
     this.initContext();
     if (!this.ctx) return;
 
