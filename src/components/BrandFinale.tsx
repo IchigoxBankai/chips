@@ -116,7 +116,7 @@ export const BrandFinale: React.FC<BrandFinaleProps> = ({
                 {/* Studio Product Pack */}
                 <div className="w-24 h-34 flex items-center justify-center mb-3">
                   <img
-                    src={`/assets/cruncha-${flv.id}-hero.png`}
+                    src={`${import.meta.env.BASE_URL}assets/cruncha-${flv.id}-hero.png`}
                     alt={flv.name}
                     className="max-h-full w-auto object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
                   />

@@ -29,7 +29,7 @@ export function createExplosionSystem(initialFlavour: FlavourId = 'fire-chilli')
 
   // Try loading photographic chip texture
   const texLoader = new THREE.TextureLoader();
-  texLoader.load('/assets/chip-1.jpg', (tex) => {
+  texLoader.load(`${import.meta.env.BASE_URL}assets/chip-1.jpg`, (tex) => {
     tex.colorSpace = THREE.SRGBColorSpace;
     chipMat.map = tex;
     chipMat.needsUpdate = true;

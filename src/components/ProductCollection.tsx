@@ -236,7 +236,7 @@ export const ProductCollection: React.FC<ProductCollectionProps> = ({
                   <div className="my-4 relative flex flex-col items-center">
                     <div className="w-48 h-64 relative flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
                       <img
-                        src={`/assets/cruncha-${product.id}-hero.png`}
+                        src={`${import.meta.env.BASE_URL}assets/cruncha-${product.id}-hero.png`}
                         alt={`${product.name} Pouch`}
                         className="max-h-full w-auto object-contain drop-shadow-[0_20px_25px_rgba(0,0,0,0.35)]"
                         loading="lazy"

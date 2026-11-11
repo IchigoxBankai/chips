@@ -11,7 +11,7 @@ export const ScrollTravelingPacket: React.FC<ScrollTravelingPacketProps> = ({
   activeFlavour,
   tearProgress
 }) => {
-  const pouchImageSrc = `/assets/cruncha-${activeFlavour}-hero.png`;
+  const pouchImageSrc = `${import.meta.env.BASE_URL}assets/cruncha-${activeFlavour}-hero.png`;
 
   return (
     <div

@@ -116,7 +116,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckout }) => {
                     {/* Flavour Studio Thumbnail */}
                     <div className="w-14 h-18 flex items-center justify-center shrink-0">
                       <img
-                        src={`/assets/cruncha-${item.flavourId}-hero.png`}
+                        src={`${import.meta.env.BASE_URL}assets/cruncha-${item.flavourId}-hero.png`}
                         alt={item.name}
                         className="max-h-full w-auto object-contain drop-shadow"
                       />

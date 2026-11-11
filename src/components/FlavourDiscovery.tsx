@@ -207,11 +207,7 @@ export const FlavourDiscovery: React.FC<FlavourDiscoveryProps> = ({
           <div className="relative z-10 animate-pouch-float transition-all duration-500 ease-out flex items-center justify-center">
             <img
               key={currentFlavour.id}
-              src={
-                currentFlavour.id === 'fire-chilli'
-                  ? '/assets/cruncha-fire-chilli-hero.png'
-                  : `/assets/cruncha-${currentFlavour.id}-hero.png`
-              }
+              src={`${import.meta.env.BASE_URL}assets/cruncha-${currentFlavour.id}-hero.png`}
               alt={`${currentFlavour.name} CRUNCHA Kettle Cooked Potato Chips`}
               className="max-h-[360px] sm:max-h-[420px] lg:max-h-[460px] w-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.4)] select-none transition-transform duration-300 hover:scale-105"
               draggable={false}

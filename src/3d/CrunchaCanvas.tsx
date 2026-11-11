@@ -27,15 +27,16 @@ export const CrunchaCanvas: React.FC<CrunchaCanvasProps> = ({
   // Flavour texture sync
   useEffect(() => {
     if (pouchRef.current) {
+      const base = import.meta.env.BASE_URL;
       if (activeFlavour === 'fire-chilli') {
         pouchRef.current.setFlavourTexture(
-          '/assets/pouch-front-fire-chilli.png',
-          '/assets/pouch-back-fire-chilli.png'
+          `${base}assets/pouch-front-fire-chilli.png`,
+          `${base}assets/pouch-back-fire-chilli.png`
         );
       } else {
         pouchRef.current.setFlavourTexture(
-          `/assets/pouch-${activeFlavour}.jpg`,
-          '/assets/pouch-back-fire-chilli.png'
+          `${base}assets/pouch-${activeFlavour}.jpg`,
+          `${base}assets/pouch-back-fire-chilli.png`
         );
       }
     }
@@ -247,15 +248,16 @@ export const CrunchaCanvas: React.FC<CrunchaCanvasProps> = ({
         }
       },
       setFlavour: (flavourId) => {
+        const base = import.meta.env.BASE_URL;
         if (flavourId === 'fire-chilli') {
           pouch.setFlavourTexture(
-            '/assets/pouch-front-fire-chilli.png',
-            '/assets/pouch-back-fire-chilli.png'
+            `${base}assets/pouch-front-fire-chilli.png`,
+            `${base}assets/pouch-back-fire-chilli.png`
           );
         } else {
           pouch.setFlavourTexture(
-            `/assets/pouch-${flavourId}.jpg`,
-            '/assets/pouch-back-fire-chilli.png'
+            `${base}assets/pouch-${flavourId}.jpg`,
+            `${base}assets/pouch-back-fire-chilli.png`
           );
         }
         if (explosionRef.current) {

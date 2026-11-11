@@ -33,22 +33,23 @@ export function createPouchModel(): PouchComponents {
 
   // 1. Textures
   const textureLoader = new THREE.TextureLoader();
+  const base = import.meta.env.BASE_URL;
 
   // Load cropped official CRUNCHA Fire Chilli reference image
-  const frontTex = textureLoader.load('/assets/pouch-front-fire-chilli.png');
+  const frontTex = textureLoader.load(`${base}assets/pouch-front-fire-chilli.png`);
   frontTex.colorSpace = THREE.SRGBColorSpace;
   frontTex.generateMipmaps = true;
   frontTex.minFilter = THREE.LinearMipmapLinearFilter;
 
-  const backTex = textureLoader.load('/assets/pouch-back-fire-chilli.png');
+  const backTex = textureLoader.load(`${base}assets/pouch-back-fire-chilli.png`);
   backTex.colorSpace = THREE.SRGBColorSpace;
   backTex.generateMipmaps = true;
 
-  const normalMap = textureLoader.load('/assets/pouch-normal.png');
+  const normalMap = textureLoader.load(`${base}assets/pouch-normal.png`);
   normalMap.wrapS = THREE.RepeatWrapping;
   normalMap.wrapT = THREE.RepeatWrapping;
 
-  const roughnessMap = textureLoader.load('/assets/pouch-roughness.png');
+  const roughnessMap = textureLoader.load(`${base}assets/pouch-roughness.png`);
 
   // 2. High-End PBR Packaging Materials (Clearcoat gloss over flexible foil)
   const frontMaterial = new THREE.MeshPhysicalMaterial({
